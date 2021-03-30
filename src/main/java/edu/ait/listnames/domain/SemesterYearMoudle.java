@@ -6,6 +6,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 
@@ -23,6 +24,10 @@ import java.io.Serializable;
 public class SemesterYearMoudle implements Serializable {
 
     private static final long serialVersionUID = 6153684345618738134L;
+
+    @Id
+    @Column(name = "id")
+    private String id;
 
     @Column(name = "semester_year_id")
     private String semesterYearId;//学期学年id

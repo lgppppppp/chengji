@@ -16,7 +16,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "grade")
 @DynamicUpdate
-@NamedQuery(name = "Grade.findAll", query = "SELECT s FROM Grade s where s.flag = 1")
+@NamedQuery(name = "Grade.findAll", query = "SELECT s FROM Grade s ")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 @Data
 public class Grade implements Serializable {

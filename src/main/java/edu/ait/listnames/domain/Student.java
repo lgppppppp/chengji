@@ -17,7 +17,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "student")
 @DynamicUpdate
-@NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s where s.flag = 1")
+@NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s ")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 @Data
 public class Student implements Serializable {
@@ -36,4 +36,6 @@ public class Student implements Serializable {
 
     @Column(name = "password")
     private String password;//密码
+
+
 }

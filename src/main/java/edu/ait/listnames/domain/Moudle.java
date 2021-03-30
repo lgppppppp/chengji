@@ -17,7 +17,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "moudle")
 @DynamicUpdate
-@NamedQuery(name = "Moudle.findAll", query = "SELECT s FROM Moudle s where s.flag = 1")
+@NamedQuery(name = "Moudle.findAll", query = "SELECT s FROM Moudle s ")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 @Data
 public class Moudle implements Serializable {

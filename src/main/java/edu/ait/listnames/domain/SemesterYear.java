@@ -17,7 +17,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "semester_year")
 @DynamicUpdate
-@NamedQuery(name = "SemesterYear.findAll", query = "SELECT s FROM SemesterYear s where s.flag = 1")
+@NamedQuery(name = "SemesterYear.findAll", query = "SELECT s FROM SemesterYear s")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 @Data
 public class SemesterYear implements Serializable {
