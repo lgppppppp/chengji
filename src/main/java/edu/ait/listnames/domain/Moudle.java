@@ -5,10 +5,7 @@ import edu.ait.utils.Audited;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -23,9 +20,13 @@ import java.io.Serializable;
 @NamedQuery(name = "Moudle.findAll", query = "SELECT s FROM Moudle s where s.flag = 1")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 @Data
-public class Moudle extends Audited implements Serializable {
+public class Moudle implements Serializable {
 
     private static final long serialVersionUID = -4432884085781947011L;
+
+    @Id
+    @Column(name = "id")
+    private String id;
 
     @Column(name = "moudle_name")
     private String moudleName;//学科名称

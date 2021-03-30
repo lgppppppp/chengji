@@ -5,10 +5,7 @@ import edu.ait.utils.Audited;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -23,9 +20,13 @@ import java.io.Serializable;
 @NamedQuery(name = "SemesterYear.findAll", query = "SELECT s FROM SemesterYear s where s.flag = 1")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 @Data
-public class SemesterYear extends Audited implements Serializable {
+public class SemesterYear implements Serializable {
 
     private static final long serialVersionUID = -4517819210222136913L;
+
+    @Id
+    @Column(name = "id")
+    private String id;
 
     @Column(name = "start_year")
     private Integer startYear;//开始学年

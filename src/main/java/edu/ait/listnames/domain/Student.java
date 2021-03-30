@@ -4,10 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import edu.ait.utils.Audited;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -22,9 +20,13 @@ import java.io.Serializable;
 @NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s where s.flag = 1")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 @Data
-public class Student extends Audited implements Serializable {
+public class Student implements Serializable {
 
     private static final long serialVersionUID = 273045115492848660L;
+
+    @Id
+    @Column(name = "id")
+    private String id;
 
     @Column(name = "name")
     private String name;//姓名

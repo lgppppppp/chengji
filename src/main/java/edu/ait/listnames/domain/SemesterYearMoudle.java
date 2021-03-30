@@ -1,10 +1,10 @@
 package edu.ait.listnames.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import edu.ait.utils.Audited;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -20,9 +20,13 @@ import java.io.Serializable;
 @DynamicUpdate
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 @Data
-public class SemesterYearMoudle extends Audited implements Serializable {
+public class SemesterYearMoudle implements Serializable {
 
     private static final long serialVersionUID = 6153684345618738134L;
 
+    @Column(name = "semester_year_id")
+    private String semesterYearId;//学期学年id
 
+    @Column(name = "moudle_id")
+    private String moudleId;//学科id
 }
