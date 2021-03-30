@@ -17,14 +17,13 @@ import java.io.Serializable;
  * @create: 2021-03-30 23:21
  **/
 @Entity
-@Table(name = "moudle")
+@Table(name = "semester_year_moudle")
 @DynamicUpdate
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 @Data
 public class SemesterYearMoudle implements Serializable {
 
     private static final long serialVersionUID = 6153684345618738134L;
-
     @Id
     @Column(name = "id")
     private String id;
