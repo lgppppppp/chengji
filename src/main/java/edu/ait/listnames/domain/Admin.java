@@ -9,19 +9,19 @@ import java.io.Serializable;
 
 /**
  * @program: listnames
- * @description: 学生表
+ * @description: 管理员表
  * @author: lgppppppp
- * @create: 2021-03-30 22:42
+ * @create: 2021-04-03 19:35
  **/
 @Entity
-@Table(name = "student")
+@Table(name = "admin")
 @DynamicUpdate
-@NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s ")
+@NamedQuery(name = "Admin.findAll", query = "SELECT s FROM Admin s ")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 @Data
-public class Student implements Serializable {
+public class Admin implements Serializable {
 
-    private static final long serialVersionUID = 273045115492848660L;
+    private static final long serialVersionUID = 9187606894071002939L;
 
     @Id
     @Column(name = "id")

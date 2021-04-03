@@ -12,26 +12,29 @@ import java.io.Serializable;
 
 /**
  * @program: listnames
- * @description: 学期学年学科中间表
+ * @description: 老师-学科关联表
  * @author: lgppppppp
- * @create: 2021-03-30 23:21
+ * @create: 2021-04-03 19:39
  **/
 @Entity
-@Table(name = "semester_year_moudle")
+@Table(name = "lecturer_moudle")
 @DynamicUpdate
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 @Data
-public class SemesterYearMoudle implements Serializable {
+public class LecturerMoudle implements Serializable {
 
-    private static final long serialVersionUID = 6153684345618738134L;
+    private static final long serialVersionUID = -3526184792582508553L;
 
     @Id
     @Column(name = "id")
     private String id;
 
-    @Column(name = "semester_year_id")
-    private String semesterYearId;//学期学年id
+    @Column(name = "lecturer_id")
+    private String lecturerId;//导师id
 
     @Column(name = "moudle_id")
     private String moudleId;//学科id
+
+    @Column(name = "semester_year_id")
+    private String semesterYearId;//学期学年id
 }
