@@ -17,7 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.dao.EmptyResultDataAccessException;
 
 import edu.ait.listnames.dto.Name;
-import edu.ait.listnames.domain.NameRepository;
+import edu.ait.listnames.repository.NameRepository;
 import edu.ait.listnames.exceptions.NameNotFoundException;
 
 @RestController

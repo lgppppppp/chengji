@@ -1,0 +1,31 @@
+package edu.ait.listnames.service;
+
+import edu.ait.listnames.dto.StudentMenuRespDto;
+import edu.ait.listnames.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @program: listnames
+ * @description: 学生接口
+ * @author: lgppppppp
+ * @create: 2021-04-03 20:11
+ **/
+@Service
+public class StudentService {
+
+    @Autowired
+    private StudentRepository studentRepository;
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public List<StudentMenuRespDto> findMenu(String id){
+        List<StudentMenuRespDto> menuList = new ArrayList<>();
+        menuList = studentRepository.findMenu(id);
+        return menuList;
+    }
+}

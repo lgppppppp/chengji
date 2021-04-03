@@ -1,7 +1,6 @@
-package edu.ait.listnames.domain;
+package edu.ait.listnames.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import edu.ait.utils.Audited;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 

@@ -1,4 +1,4 @@
-package edu.ait.listnames.domain;
+package edu.ait.listnames.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;

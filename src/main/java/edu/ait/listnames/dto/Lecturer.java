@@ -1,4 +1,4 @@
-package edu.ait.listnames.domain;
+package edu.ait.listnames.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
@@ -9,19 +9,19 @@ import java.io.Serializable;
 
 /**
  * @program: listnames
- * @description: 学生表
+ * @description: 导师表
  * @author: lgppppppp
- * @create: 2021-03-30 22:42
+ * @create: 2021-04-03 19:33
  **/
 @Entity
-@Table(name = "student")
+@Table(name = "lecturer")
 @DynamicUpdate
-@NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s ")
+@NamedQuery(name = "Lecturer.findAll", query = "SELECT s FROM Lecturer s ")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 @Data
-public class Student implements Serializable {
+public class Lecturer implements Serializable {
 
-    private static final long serialVersionUID = 273045115492848660L;
+    private static final long serialVersionUID = -7819965119818714595L;
 
     @Id
     @Column(name = "id")
@@ -35,4 +35,5 @@ public class Student implements Serializable {
 
     @Column(name = "password")
     private String password;//密码
+
 }
