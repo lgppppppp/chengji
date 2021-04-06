@@ -1,6 +1,8 @@
 package edu.ait.listnames.controller;
 
+import edu.ait.listnames.dto.SemesterYear;
 import edu.ait.listnames.dto.StudentMenuRespDto;
+import edu.ait.listnames.dto.StudentScoreDto;
 import edu.ait.listnames.service.StudentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
@@ -23,11 +25,23 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+    /**
+     * 学生端菜单列表
+     * @param id
+     * @return
+     */
     @GetMapping(value = "/findMenu")
     @ResponseBody
     public List<StudentMenuRespDto> findMenu(@RequestParam(value = "id", required = false)
                                              @ApiParam(name = "id", value = "id", required = false) String id) {
         List<StudentMenuRespDto> menu = studentService.findMenu(id);
         return menu;
+    }
+
+    @GetMapping(value = "/findScore")
+    @ResponseBody
+    public List<StudentScoreDto> findScore(SemesterYear semesterYear, String userId){
+        List<StudentScoreDto> scoreList = studentService.findScore(semesterYear,userId);
+        return scoreList;
     }
 }

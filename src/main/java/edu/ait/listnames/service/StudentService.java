@@ -1,6 +1,8 @@
 package edu.ait.listnames.service;
 
+import edu.ait.listnames.dto.SemesterYear;
 import edu.ait.listnames.dto.StudentMenuRespDto;
+import edu.ait.listnames.dto.StudentScoreDto;
 import edu.ait.listnames.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @program: listnames
@@ -27,5 +30,9 @@ public class StudentService {
         List<StudentMenuRespDto> menuList = new ArrayList<>();
         menuList = studentRepository.findMenu(id);
         return menuList;
+    }
+
+    public List<StudentScoreDto> findScore(SemesterYear semesterYear, String userId) {
+        return Optional.ofNullable(studentRepository.findScore(semesterYear.getId(),userId)).orElse(new ArrayList());
     }
 }
