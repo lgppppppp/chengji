@@ -5,17 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author xgy
- * @date 2021-04-05 1:57
- */
+ * @program: listnames
+ * @description: 教师端成绩查询
+ * @author: lgppppppp
+ * @create: 2021-04-06 21:19
+ **/
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class StudentScoreDto {
-    private String studentId;
-
-    private String moudleName;
-
+public class LecturerGradeResDto {
+    private String name;
     private Integer grade;
-
 }

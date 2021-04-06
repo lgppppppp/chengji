@@ -1,6 +1,7 @@
 package edu.ait.listnames.controller;
 
 import edu.ait.listnames.dto.LectureMenuResDto;
+import edu.ait.listnames.dto.LecturerGradeResDto;
 import edu.ait.listnames.service.LectureService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
@@ -28,5 +29,13 @@ public class LecturerController {
                                              @ApiParam(name = "id", value = "id", required = false) String id) {
         List<LectureMenuResDto> menu = lectureService.findMenu(id);
         return menu;
+    }
+
+    @GetMapping(value = "/findGrade")
+    @ResponseBody
+    public List<LecturerGradeResDto> findGrade(@RequestParam(value = "id", required = false)
+                                            @ApiParam(name = "id", value = "id", required = false) String id) {
+        List<LecturerGradeResDto> Grade = lectureService.findGrade(id);
+        return Grade;
     }
 }
