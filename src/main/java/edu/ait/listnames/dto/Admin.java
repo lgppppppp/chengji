@@ -16,7 +16,6 @@ import java.io.Serializable;
 @Entity
 @Table(name = "admin")
 @DynamicUpdate
-@NamedQuery(name = "Admin.findAll", query = "SELECT s FROM Admin s ")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 @Data
 public class Admin implements Serializable {

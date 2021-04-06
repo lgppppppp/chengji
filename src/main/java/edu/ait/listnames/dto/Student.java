@@ -1,7 +1,9 @@
 package edu.ait.listnames.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -19,6 +21,8 @@ import java.io.Serializable;
 @NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s ")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Student implements Serializable {
 
     private static final long serialVersionUID = 273045115492848660L;
