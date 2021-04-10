@@ -19,9 +19,9 @@ public interface AdminRepository extends JpaRepository<Admin, String>,
             "left join SemesterYearMoudle sym ON sy.id = sym.semesterYearId left join Moudle m ON m.id = sym.moudleId")
     Page<AdminMenuResDto> findMenu(Pageable pageable);
 
-    @Query(value = "select new edu.ait.listnames.dto.Student(sl.studentId,sl.studentId,sl.studentId,sl.studentId)" +
-            "from StudentLecturer sl where sl.lecturerId in" +
-            "(select  le.id from Lecturer le join LecturerMoudle lm on lm.lecturerId = le.id where  lm.moudleId = :moudleId )" )
+    @Query(value = "select new edu.ait.listnames.dto.Student(s.id,s.name,s.userName,s.password)" +
+            "from Student s left join StudentLecturer sl on s.id = sl.studentId where sl.lecturerId in" +
+            "(select  le.id from Lecturer le join LecturerMoudle lm on lm.lecturerId = le.id where  lm.moudleId = :moudleId ) " )
     List<Student> findStudentIdList(@Param("moudleId") String moudleId);
 
     @Query(value = "select s from Student s" )

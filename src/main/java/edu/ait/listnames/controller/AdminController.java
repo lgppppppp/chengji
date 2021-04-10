@@ -52,4 +52,30 @@ public class AdminController {
         List<Student> allStudent = adminService.findAllStudent(id);
         return allStudent;
     }
+
+    /**
+     * 查询已选择这门课的学生
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/findStudentDone")
+    @ResponseBody
+    public List<Student> findStudentDone(@RequestParam(value = "id", required = false)
+                                        @ApiParam(name = "id", value = "id", required = false) String id) {
+        List<Student> allDoneStudent = adminService.findStudentDone(id);
+        return allDoneStudent;
+    }
+
+    /**  
+     * @description: //TODO 为老师选择学生
+     * @author: lgppppppp
+     * @date: 2021-04-10 18:11
+     * @param: [studentId, lecturerId]
+     * @return: java.lang.Boolean
+     **/
+    @PostMapping(value = "/save")
+    public Boolean saveStudentLecturer(@RequestParam(value = "studentIds") List<String> studentId,
+                                       @RequestParam(value = "lecturerId") String lecturerId){
+        return adminService.saveLecturerStudent(studentId, lecturerId);
+    }
 }

@@ -2,7 +2,9 @@ package edu.ait.listnames.service;
 
 import edu.ait.listnames.dto.AdminMenuResDto;
 import edu.ait.listnames.dto.Student;
+import edu.ait.listnames.dto.StudentLecturer;
 import edu.ait.listnames.repository.AdminRepository;
+import edu.ait.listnames.repository.StudentLecturerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -24,6 +26,8 @@ import java.util.stream.Collectors;
 public class AdminService {
     @Autowired
     private AdminRepository adminRepository;
+    @Autowired
+    private StudentLecturerRepository studentLecturerRepository;
 
     @Transactional(propagation = Propagation.REQUIRED)
     public List<AdminMenuResDto> findMenu(){
@@ -33,9 +37,15 @@ public class AdminService {
         return menuList;
     }
 
+    /**
+     * 未选择这门课的学生
+     * @param moudleId
+     * @return
+     */
     public List<Student> findAllStudent(String moudleId) {
         // 选择该课程的学生
-        List<Student> findStudentIdList = adminRepository.findStudentIdList(moudleId);
+        List<Student> findStudentList = adminRepository.findStudentIdList(moudleId);
+        List<String>  findStudentIdList= findStudentList.stream().map(Student::getId).collect(Collectors.toList());
         // 所有学生
         List<Student> allStudent = adminRepository.findAllStudent();
         // 未选择该课程的学生
@@ -46,5 +56,29 @@ public class AdminService {
             return true;
         }).collect(Collectors.toList());
         return collect;
+    }
+
+    /**
+     * 已选择这门课的学生
+     */
+    public List<Student> findStudentDone(String moudleId){
+        List<Student> findStudentList = adminRepository.findStudentIdList(moudleId);
+        return  findStudentList;
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public Boolean saveLecturerStudent(List<String> studentIds,String lecturerId){
+        try {
+            studentIds.forEach(studentid -> {
+                StudentLecturer studentLecturer = new StudentLecturer();
+                studentLecturer.setStudentId(studentid);
+                studentLecturer.setLecturerId(lecturerId);
+                studentLecturerRepository.save(studentLecturer);
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }
