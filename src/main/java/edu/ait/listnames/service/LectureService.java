@@ -3,6 +3,7 @@ package edu.ait.listnames.service;
 import edu.ait.listnames.dto.LectureMenuResDto;
 import edu.ait.listnames.dto.LecturerGradeResDto;
 import edu.ait.listnames.repository.LecturerRepository;
+import edu.ait.listnames.token.TokenDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

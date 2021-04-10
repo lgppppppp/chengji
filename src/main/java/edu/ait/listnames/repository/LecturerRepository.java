@@ -32,4 +32,14 @@ public interface LecturerRepository extends JpaRepository<Lecturer, String>,
     @Query(value = " select new edu.ait.listnames.dto.LecturerGradeResDto(s.name,g.grade) from " +
             "Grade g left join Student s on s.id = g.studentId where g.semesterYearId = :id")
     Page<LecturerGradeResDto> findGrade(@Param("id") String id, Pageable pageable);
+
+    /**
+     * @description: //TODO 老师登陆
+     * @author: lgppppppp
+     * @date: 2021-04-10 17:37
+     * @param:
+     * @return:
+     **/
+    @Query(value = "select s from Lecturer s where s.userName = :userName and s.password = :password")
+    Lecturer login(@Param("userName") String userName,@Param("password")String password);
 }

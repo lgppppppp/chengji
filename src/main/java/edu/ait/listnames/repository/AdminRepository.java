@@ -26,4 +26,7 @@ public interface AdminRepository extends JpaRepository<Admin, String>,
 
     @Query(value = "select s from Student s" )
     List<Student> findAllStudent();
+
+    @Query(value = "select s from Admin s where s.userName = :userName and s.password = :password")
+    Admin login(@Param("userName") String userName,@Param("password")String password);
 }

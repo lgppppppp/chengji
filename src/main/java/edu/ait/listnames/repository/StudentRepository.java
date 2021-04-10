@@ -34,4 +34,14 @@ public interface StudentRepository extends JpaRepository<Student, String>,
             "from Grade g left join Moudle m on m.id = g.moudleId where g.studentId = :id " +
             "and g.semesterYearId = :semesterYearId")
     List<StudentScoreDto> findScore(@Param("semesterYearId") String semesterYearId, @Param("id") String userId);
+
+    /**
+     * @description: //TODO 学生登陆
+     * @author: lgppppppp
+     * @date: 2021-04-10 16:56
+     * @param:
+     * @return:
+     **/
+    @Query(value = "select s from Student s where s.userName = :userName and s.password = :password")
+    Student login(@Param("userName") String userName,@Param("password")String password);
 }
